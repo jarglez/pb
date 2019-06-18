@@ -1,0 +1,13 @@
+version: '2'
+services:
+  pb:
+    image: judge0/pb:4b1cd3bb
+    ports:
+      - "8080:8080"
+    restart: always
+
+  mongodb:
+    image: mongo:4
+    volumes:
+      - ./srv/mongo-data:/data/db
+    restart: always
