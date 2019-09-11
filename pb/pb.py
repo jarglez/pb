@@ -39,6 +39,7 @@ def cors(response):
         if value:
             response.headers[response_header] = value
 
+    response.headers[cors_map['Origin']] = '*'
     return response
 
 
