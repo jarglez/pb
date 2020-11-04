@@ -2,6 +2,7 @@ FROM python:3.6-alpine
 
 EXPOSE 8080
 ENV CDN_PREFIX=//d34zelngniy2d8.cloudfront.net
+ENV VIRTUAL_PORT 8080
 
 COPY . /pb
 RUN apk add --no-cache --virtual .build-deps git && \

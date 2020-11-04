@@ -1,13 +1,27 @@
 version: '2'
+
+x-logging:
+  &default-logging
+  logging:
+    driver: json-file
+    options:
+      max-size: 10m
+
 services:
   pb:
     image: judge0/pb:4b1cd3bb
     ports:
       - "8080:8080"
+    <<: *default-logging
     restart: always
 
-  mongodb:
+  mongo:
     image: mongo:4
     volumes:
-      - ./srv/mongo-data:/data/db
+      - ./config.yaml:/etc/xdg/pb/config.yaml
+      - mongo-data:/data/db
+    <<: *default-logging
     restart: always
+
+volumes:
+  mongo-data:
