@@ -9,7 +9,9 @@ x-logging:
 
 services:
   pb:
-    image: judge0/pb:4b1cd3bb
+    image: judge0/pb:d0c2309e
+    volumes:
+      - ./config.yaml:/etc/xdg/pb/config.yaml
     ports:
       - "8080:8080"
     <<: *default-logging
@@ -18,7 +20,6 @@ services:
   mongo:
     image: mongo:4
     volumes:
-      - ./config.yaml:/etc/xdg/pb/config.yaml
       - mongo-data:/data/db
     <<: *default-logging
     restart: always

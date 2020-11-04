@@ -124,9 +124,12 @@ class PasteResponse(DictResponse):
         return super()._dump(obj)
 
     def __dir__(self):
-        return ['url', 'long', 'short',
-                'uuid', 'status', 'label', 'sunset',
-                'redirect', 'digest', 'namespace', 'date', 'size']
+        if request.args.get('ref') in ['judge0-ce', 'judge0-extra-ce', 'judge0-ee', 'judge0-extra-ee']:
+            return ['short', 'long', 'digest', 'size']
+        else:
+            return ['url', 'long', 'short',
+                    'uuid', 'status', 'label', 'sunset',
+                    'redirect', 'digest', 'namespace', 'date', 'size']
 
     def __getattr__(self, name):
         if name in dir(self):
