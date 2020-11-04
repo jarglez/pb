@@ -9,7 +9,7 @@ x-logging:
 
 services:
   pb:
-    image: judge0/pb:d0c2309e
+    image: judge0/pb:d3f1ca3c
     volumes:
       - ./config.yaml:/etc/xdg/pb/config.yaml
     ports:
